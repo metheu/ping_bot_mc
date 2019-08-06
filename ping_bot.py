@@ -68,8 +68,8 @@ while True:
                 )
     else:
         # logg the error and set failling flag to 1
-        logging.warning("Issue encountered! Status code: %s", str(r.status_code))
         failing += 1
+        logging.warning("Issue encountered! Status code: %s failing #: %s", str(r.status_code), failing)
         if failing <= 1:
             headers_slack = {"Content-Type": "application/json"}
             slack_payload = json.dumps(
