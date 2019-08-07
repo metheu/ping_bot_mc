@@ -4,7 +4,7 @@ import requests, time, json, logging, sys
 logging.basicConfig(level=logging.INFO)
 
 # test_env
-test_status_code = 500;
+test_status_code = 500
 # failing boolean
 failing = 0
 
@@ -22,21 +22,24 @@ data = {
 }
 # Encode as json
 data_e = json.dumps(data)
-# Make the request
-r = requests.post(
-    "https://testmcl1.tbconline.ge/ibs/delegate/rest/auth/v1/login",
-    headers=headers,
-    data=data_e,
-)
 
+# start the loop
 while True:
+
+    # Make the request
+    r = requests.post(
+        "https://testmcl1.tbconline.ge/ibs/delegate/rest/auth/v1/login",
+        headers=headers,
+        data=data_e,
+    )
+
     if r.status_code == 200:
         logging.info("Ping is stable: Status code: %s", str(r.status_code))
         # if the systems recovers send notification
         if failing >= 1:
             # send notification and set failing to 0
             logging.info("Seems like system has recovered! Sending notification!")
-            failing = 0;
+            failing = 0
 
             headers_slack = {"Content-Type": "application/json"}
             slack_payload = json.dumps(
@@ -69,7 +72,13 @@ while True:
     else:
         # logg the error and set failling flag to 1
         failing += 1
-        logging.warning("Issue encountered! Status code: %s failing #: %s", str(r.status_code), failing)
+        logging.warning(
+            "Issue encountered! Status code: %s failing #: %s",
+            str(r.status_code),
+            failing,
+        )
+
+        # if failed for first time
         if failing <= 1:
             headers_slack = {"Content-Type": "application/json"}
             slack_payload = json.dumps(
@@ -100,4 +109,5 @@ while True:
                     p_res.text,
                 )
 
+    # sleep for 1 min                
     time.sleep(60)
