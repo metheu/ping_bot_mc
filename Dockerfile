@@ -6,7 +6,7 @@ WORKDIR /app
 
 RUN pip3 install -r /requirements.txt
 
-COPY ping_bot.py /app/
+COPY ping_bot.py .env /app/
 
 EXPOSE 80
 
