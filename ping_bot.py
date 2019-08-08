@@ -1,7 +1,20 @@
-import requests, time, json, logging, sys
+import requests, time, json, logging, sys, os
+from dotenv import load_dotenv
 
 # Set the config level
 logging.basicConfig(level=logging.INFO)
+
+# load dotenv file
+load_dotenv(verbose=True)
+
+# Get the username and password for api call from dotenv file
+username = os.getenv("USER_NAME")
+password = os.getenv("USER_PASSWORD")
+
+# check that necessary variables are loaded!
+for i in username,password:
+    if not i:
+        raise ValueError("Seems like .env file is empty or didn't map correct values!")
 
 # test_env
 test_status_code = 500
@@ -15,8 +28,8 @@ headers = {
 }
 # Set the data
 data = {
-    "username": "TEMU",
-    "password": "aRt71111",
+    "username": os.getenv("USER_NAME"),
+    "password": os.getenv("USER_PASSWORD"),
     "language": "en",
     "rememberUserName": False,
 }
