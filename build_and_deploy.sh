@@ -36,6 +36,8 @@ else
         echo "Something went wrong! Container not running!"
     else
         echo "All systems go!"
+        # using gnu-sed update README version number
+        gsed -E -i -e 's/[0-9]\.[0-9]\.[0-9]|[0-9]\.[0-9]/'$1'/g' README.md
     fi
 fi
 
