@@ -12,7 +12,7 @@ username = os.getenv("USER_NAME")
 password = os.getenv("USER_PASSWORD")
 
 # check that necessary variables are loaded!
-for i in username,password:
+for i in username, password:
     if not i:
         raise ValueError("Seems like .env file is empty or didn't map correct values!")
 
@@ -21,11 +21,15 @@ test_status_code = 500
 # failing boolean
 failing = 0
 
+# set the params
+params_payload = {"X-IBS-CHANNEL": "MBS"}
+
 # set the headers
 headers = {
     "Accept": "application/json, text/plain, */*",
     "Content-Type": "application/json",
 }
+
 # Set the data
 data = {
     "username": os.getenv("USER_NAME"),
@@ -42,6 +46,7 @@ while True:
     # Make the request
     r = requests.post(
         "https://testmcl1.tbconline.ge/ibs/delegate/rest/auth/v1/login",
+        params=params_payload,
         headers=headers,
         data=data_e,
     )
@@ -122,5 +127,5 @@ while True:
                     p_res.text,
                 )
 
-    # sleep for 1 min                
+    # sleep for 1 min
     time.sleep(60)
