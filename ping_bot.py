@@ -7,9 +7,10 @@ logging.basicConfig(level=logging.INFO)
 # load dotenv file
 load_dotenv(verbose=True)
 
-# Get the username and password for api call from dotenv file
+#  Load env variables form file
 username = os.getenv("USER_NAME")
 password = os.getenv("USER_PASSWORD")
+test_url = os.getenv("TEST_URL")
 
 # check that necessary variables are loaded!
 for i in username, password:
@@ -45,7 +46,7 @@ while True:
 
     # Make the request
     r = requests.post(
-        "https://testmcl1.tbconline.ge/ibs/delegate/rest/auth/v1/login",
+        test_url,
         params=params_payload,
         headers=headers,
         data=data_e,
