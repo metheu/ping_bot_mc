@@ -60,6 +60,7 @@ while True:
             # send notification and set failing to 0
             logging.info("Seems like system has recovered! Sending notification!")
             failing = 0
+            down_time = '{:02d}:{:02d}'.format(*divmod(failing, 60)), 
 
             headers_slack = {"Content-Type": "application/json"}
             slack_payload = json.dumps(
@@ -67,7 +68,7 @@ while True:
                     "attachments": [
                         {
                             "pretext": "MCL seem to have recovered! :innocent: :ghost: :man-cartwheeling:",
-                            "title": "MCL has recovered!",
+                            "title": "MCL has recovered! Down time: " + down_time, 
                             "text": "Error code: "
                             + str(r.status_code)
                             + " Response: "
