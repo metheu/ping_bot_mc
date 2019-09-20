@@ -11,6 +11,7 @@ load_dotenv(verbose=True)
 username = os.getenv("USER_NAME")
 password = os.getenv("USER_PASSWORD")
 test_url = os.getenv("TEST_URL")
+slack_hook = os.getenv("SLACK_HOOK_URL");
 
 # check that necessary variables are loaded!
 for i in username, password:
@@ -78,7 +79,7 @@ while True:
             )
 
             p_res = requests.post(
-                "https://hooks.slack.com/services/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",
+                slack_hook,
                 headers=headers_slack,
                 data=slack_payload,
             )
@@ -117,7 +118,7 @@ while True:
             )
             logging.info("Sending notification to slack!")
             p_res = requests.post(
-                "https://hooks.slack.com/services/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",
+                slack_hook,
                 headers=headers_slack,
                 data=slack_payload,
             )
