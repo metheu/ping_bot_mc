@@ -68,7 +68,7 @@ while True:
                     "attachments": [
                         {
                             "pretext": "MCL seem to have recovered! :innocent: :ghost: :man-cartwheeling:",
-                            "title": "MCL has recovered! Down time: " + down_time, 
+                            "title": "MCL has recovered! Down time: " + str(down_time), 
                             "text": "Error code: "
                             + str(r.status_code)
                             + " Response: "
