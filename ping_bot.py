@@ -45,6 +45,9 @@ data_e = json.dumps(data)
 # start the loop
 while True:
 
+    # clear request response or else it gets saved when looping
+    r = ""
+
     # Make the request and handle it if no connection
     try:
         r = requests.post(
@@ -56,7 +59,7 @@ while True:
     except requests.ConnectionError:
         logging.error("Could not connect to server!")
 
-    if r. r.status_code == 200:
+    if not r == '' and r.status_code == 200:
         logging.info("Ping is stable: Status code: %s", str(r.status_code))
         # if the systems recovers send notification
         if failing >= 1:
@@ -93,7 +96,7 @@ while True:
                     p_res.status_code,
                     p_res.text,
                 )
-    elif r.status_code == 500:
+    elif not r == '' and r.status_code == 500:
         # logg the error and set failling flag to 1
         failing += 1
         logging.warning(
