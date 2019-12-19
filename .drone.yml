@@ -1,0 +1,14 @@
+---
+
+kind: pipeline
+name: default
+
+steps:
+  - name: docker  
+    image: plugins/docker
+    settings:
+      username: DOCKER_HUB_USERNAME
+      password: DOCKER_HUB_PASS
+      repo: mattb912/pingbotmc
+      tags: latest
+
