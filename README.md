@@ -1,4 +1,5 @@
 <h1 align="center">Welcome to ping_bot_mc 👋</h1>
+<a href="https://be2ddd34.ngrok.io/metheu/ping_bot_mc"><img src="https://be2ddd34.ngrok.io/api/badges/metheu/ping_bot_mc/status.svg" /></a>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.1.6-blue.svg?cacheSeconds=2592000" />
 </p>
