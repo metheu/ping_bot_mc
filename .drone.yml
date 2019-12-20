@@ -13,3 +13,4 @@ steps:
       from_secret: DOCKER_HUB_PASS
       repo: mattb912/pingbotmc
       tags: latest
+      dockerfile: ./Dockerfile
