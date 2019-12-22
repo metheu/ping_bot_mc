@@ -34,8 +34,8 @@ headers = {
 
 # Set the data
 data = {
-    "username": os.getenv("USER_NAME"),
-    "password": os.getenv("USER_PASSWORD"),
+    "username": username,
+    "password": password,
     "language": "en",
     "rememberUserName": False,
 }
