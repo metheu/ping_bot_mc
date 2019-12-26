@@ -19,4 +19,6 @@ steps:
     webhook:
       from_secret: SLACK_WEBHOOK
     channel: my-notifications
+    when:
+      status: [ success, failure ]
 
