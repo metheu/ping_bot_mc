@@ -13,3 +13,10 @@ steps:
     repo: matt/pingbotmc
     tags: latest
 
+- name: slack
+  image: plugins/slack
+  settings:
+    webhook:
+      from_secret: SLACK_WEBHOOK
+    channel: my-notifications
+
