@@ -7,9 +7,9 @@ steps:
   image: plugins/docker
   settings:
     username: 
-        from_secret: DOCKER_HUB_USERNAME
-      password: 
-        from_secret: DOCKER_HUB_PASS
+      from_secret: DOCKER_HUB_USERNAME
+    password: 
+      from_secret: DOCKER_HUB_PASS
     repo: matt/pingbotmc
     tags: latest
 
