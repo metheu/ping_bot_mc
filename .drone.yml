@@ -1,24 +1,15 @@
 ---
+kind: pipeline
+name: default
 
-pipeline:
-  publish:
-    image: plugins/docker
-    environment:
-      username: 
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
+    username: 
         from_secret: DOCKER_HUB_USERNAME
       password: 
         from_secret: DOCKER_HUB_PASS
-        repo: pingbotmc
-        tags: 
-          - latest
-          - '1.1.6'
-        dockerfile: ./Dockerfile
+    repo: matt/pingbotmc
+    tags: latest
 
-
-# pipeline:
-#   docker:
-#     image: plugins/docker
-#     username: kevinbacon
-#     password: pa55word
-#     repo: foo/bar
-#     tags: latest
