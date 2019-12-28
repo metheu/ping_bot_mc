@@ -2,23 +2,30 @@
 kind: pipeline
 name: default
 
+platform:
+  os: linux
+  arch: amd64
+
 steps:
-- name: docker  
+- name: docker
   image: plugins/docker
   settings:
-    username: 
-      from_secret: DOCKER_HUB_USERNAME
-    password: 
+    password:
       from_secret: DOCKER_HUB_PASS
     repo: matt/pingbotmc
     tags: latest
+    username:
+      from_secret: DOCKER_HUB_USERNAME
 
 - name: slack
   image: plugins/slack
   settings:
+    channel: my-notifications
     webhook:
       from_secret: SLACK_WEBHOOK
-    channel: my-notifications
     when:
-      status: [ success, failure ]
+      status:
+      - success
+      - failure
 
+...
