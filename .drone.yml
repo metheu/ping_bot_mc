@@ -23,7 +23,7 @@ steps:
     channel: my-notifications
     webhook:
       from_secret: SLACK_WEBHOOK
-    when:
+    trigger:
       status:
       - success
       - failure
