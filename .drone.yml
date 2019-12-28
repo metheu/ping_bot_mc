@@ -12,7 +12,7 @@ steps:
   settings:
     password:
       from_secret: DOCKER_ACCESS_TOKEN
-    repo: matt/pingbotmc
+    repo: matt912/pingbotmc
     tags: latest
     username:
       from_secret: DOCKER_HUB_USERNAME
