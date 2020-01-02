@@ -7,15 +7,6 @@ platform:
   arch: amd64
 
 steps:
-- name: docker
-  image: plugins/docker
-  settings:
-    auth: DOCKER_ACCESS_TOKEN
-    debug: true
-    repo: matt912/pingbotmc
-    tags: latest
-    username:
-      from_secret: DOCKER_HUB_USERNAME
 
 - name: notify
   image: plugins/slack-blame
@@ -29,5 +20,17 @@ steps:
     success_template: "The build is fixed! Thanks @{{slack.name}}\n"
     token:
       from_secret: drone_bot_auth_token
+      
+- name: docker
+  image: plugins/docker
+  settings:
+    auth: DOCKER_ACCESS_TOKEN
+    debug: true
+    repo: matt912/pingbotmc
+    tags: latest
+    username:
+      from_secret: DOCKER_HUB_USERNAME
+
+
 
 ...
