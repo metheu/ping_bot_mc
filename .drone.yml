@@ -10,8 +10,8 @@ steps:
 - name: build
   image: plugins/docker
   settings:
-    auth:
-    from_secret: DOCKER_ACCESS_TOKEN
+    password:
+      from_secret: docker_hub_password
     debug: true
     repo: mattb912/pingbotmc
     tags: latest
