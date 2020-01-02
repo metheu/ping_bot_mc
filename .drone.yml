@@ -32,7 +32,7 @@ steps:
       from_secret: drone_bot_auth_token
   when:
       status: 
-      - status
+      - success
       - failure
 
 
