@@ -10,23 +10,24 @@ steps:
 - name: docker
   image: plugins/docker
   settings:
-    password:
-      from_secret: DOCKER_ACCESS_TOKEN
+    auth: DOCKER_ACCESS_TOKEN
+    debug: true
     repo: matt912/pingbotmc
     tags: latest
     username:
       from_secret: DOCKER_HUB_USERNAME
 
-- name: slack
-  image: plugins/slack
+- name: notify
+  image: plugins/slack-blame
   settings:
     channel: my-notifications
-    webhook:
-      from_secret: SLACK_WEBHOOK
-
-trigger:
-  status:
-  - success
-  - failure
+    failure_image_attachments:
+    - https://imgur.com/gallery/wmuIsi1
+    failure_template: "The build is broken! Blame {{slack.name}}\n"
+    success_image_attachments:
+    - http://i.imgur.com/TP4PIxc.jpg
+    success_template: "The build is fixed! Thanks @{{slack.name}}\n"
+    token:
+      from_secret: drone_bot_auth_token
 
 ...
