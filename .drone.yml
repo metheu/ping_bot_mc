@@ -15,6 +15,12 @@ steps:
     - MC_PASS
     - TEST_URL
     - SLACK_WEBHOOK
+    secrets:
+    - MC_LOGIN
+    - MC_PASS
+    - TEST_URL
+    - SLACK_WEBHOOK
+
     password:
       from_secret: docker_hub_password
     repo: mattb912/pingbotmc
