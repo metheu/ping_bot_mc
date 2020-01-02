@@ -7,14 +7,13 @@ platform:
   arch: amd64
 
 steps:
-
-- name: docker
+- name: build
   image: plugins/docker
   settings:
     auth:
     from_secret: DOCKER_ACCESS_TOKEN
     debug: true
-    repo: matt912/pingbotmc
+    repo: mattb912/pingbotmc
     tags: latest
     username:
       from_secret: DOCKER_HUB_USERNAME
@@ -24,7 +23,7 @@ steps:
   settings:
     channel: my-notifications
     failure_image_attachments:
-    - https://imgur.com/gallery/wmuIsi1
+    - https://i.imgur.com/wmuIsi1.jpg
     failure_template: "The build is broken! Blame {{slack.name}}\n"
     success_image_attachments:
     - http://i.imgur.com/TP4PIxc.jpg
@@ -32,7 +31,9 @@ steps:
     token:
       from_secret: drone_bot_auth_token
   when:
-      status: failure
+      status: 
+      - status
+      - failure
 
 
 ...
