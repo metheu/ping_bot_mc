@@ -18,12 +18,14 @@ steps:
       from_secret: TEST_URL
     SLACK_WEBHOOK:
       from_secret: SLACK_WEBHOOK
+    TEST: THISSHOULDWORK
   settings:
     build_args_from_env:
     - $MC_LOGIN
     - $MC_PASS
     - $TEST_URL
     - $SLACK_WEBHOOK
+    - TEST
     
     password:
       from_secret: docker_hub_password
