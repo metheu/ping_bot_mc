@@ -9,18 +9,22 @@ platform:
 steps:
 - name: build
   image: plugins/docker
+  environment:
+    MC_LOGIN:
+      from_secret: MC_LOGIN
+    MC_PASS:
+      from_secret: MC_PASS
+    TEST_URL:
+      from_secret: TEST_URL
+    SLACK_WEBHOOK:
+      from_secret: SLACK_WEBHOOK
   settings:
     build_args_from_env:
     - MC_LOGIN
     - MC_PASS
     - TEST_URL
     - SLACK_WEBHOOK
-    secrets:
-    - MC_LOGIN
-    - MC_PASS
-    - TEST_URL
-    - SLACK_WEBHOOK
-
+    
     password:
       from_secret: docker_hub_password
     repo: mattb912/pingbotmc
