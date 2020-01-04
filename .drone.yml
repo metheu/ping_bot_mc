@@ -19,7 +19,6 @@ steps:
     - MC_PASS
     - TEST_URL
     - SLACK_WEBHOOK
-    - TEST
   settings: 
     password:
       from_secret: docker_hub_password
