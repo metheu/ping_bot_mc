@@ -11,4 +11,4 @@ COPY ping_bot.py /app/
 
 EXPOSE 80
 
-CMD [ "python", "./ping_bot.py" ]
+CMD [ "python", "ping_bot.py" ]
