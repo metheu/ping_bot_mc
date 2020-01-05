@@ -135,6 +135,7 @@ while True:
                     p_res.status_code,
                     p_res.text,
                 )
-
+    ## TODO: Add else if for other codes to raise alert!
+    
     # sleep for 1 min
     time.sleep(60)
