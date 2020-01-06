@@ -25,7 +25,7 @@ else
     
     echo "Old container stopped! Launching new!" 
     
-    docker run --name MCL_ping_bot -d --restart=unless-stopped matt/ping_bot:$1
+    docker run --name MCL_ping_bot -d -v $(pwd)/pingbot/.env:/app/.env:ro --restart=unless-stopped matt/ping_bot:$1
 
     echo "New container deployed with image matt/ping_bot:$1" 
     
