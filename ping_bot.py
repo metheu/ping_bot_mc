@@ -96,7 +96,7 @@ while True:
                     p_res.status_code,
                     p_res.text,
                 )
-    elif not r == '' and r.status_code == 500:
+    elif not r == '' and r.status_code != 200:
         # logg the error and set failling flag to 1
         failing += 1
         logging.warning(
@@ -135,7 +135,6 @@ while True:
                     p_res.status_code,
                     p_res.text,
                 )
-    ## TODO: Add else if for other codes to raise alert!
     
     # sleep for 1 min
     time.sleep(60)
